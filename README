@@ -1,26 +1,25 @@
 # HTTP Server in C
 
 A minimal HTTP server written in **C** using TCP sockets.
-The project demonstrates how a web server receives HTTP requests, processes them, accesses the filesystem, and sends HTTP responses.
 
 ## Features
 
 * TCP socket-based HTTP server
-* `GET` — read files and display directories
+* `GET` — read files and list directories
 * `POST` — create files
 * `PUT` — create or update files
 * `DELETE` — delete files
 * Automatic `Content-Type` detection
 * HTML directory listing
-* Browser API tester using JavaScript `fetch()`
+* Web interface using JavaScript `fetch()`
 
 ## Requirements
 
 * Linux
 * GCC
-* `curl`
+* cURL
 
-Install dependencies on Ubuntu/Debian:
+Install the dependencies on Ubuntu/Debian:
 
 ```bash
 sudo apt update
@@ -39,9 +38,9 @@ gcc -Wall -Wextra -g main.c -o main
 ./main
 ```
 
-The server listens on port **8000**.
+The server listens on port `8000`.
 
-Open in your browser:
+Open your browser:
 
 ```text
 http://localhost:8000/
@@ -59,13 +58,13 @@ curl -i http://localhost:8000/main.c
 ### POST
 
 ```bash
-curl -i -X POST http://localhost:8000/test.txt -d 'Hello HTTP'
+curl -i -X POST http://localhost:8000/test.txt -d "Hello HTTP"
 ```
 
 ### PUT
 
 ```bash
-curl -i -X PUT http://localhost:8000/test.txt -d 'Updated content'
+curl -i -X PUT http://localhost:8000/test.txt -d "Updated content"
 ```
 
 ### DELETE
@@ -77,19 +76,29 @@ curl -i -X DELETE http://localhost:8000/test.txt
 ## Architecture
 
 ```text
-Browser / curl
-      │
-      │ HTTP
-      ▼
-┌───────────────┐
-│  C HTTP Server│
-└───────┬───────┘
-        │
-        ▼
+Browser / cURL
+      |
+      | HTTP
+      v
++----------------+
+|  HTTP Server   |
+|      in C      |
++-------+--------+
+        |
+        v
    File System
 ```
 
-The browser acts as the **HTTP client**, while the C program acts as the **HTTP server**.
+The **browser or cURL** acts as the HTTP client, while the **C program** acts as the HTTP server.
+
+## Project Structure
+
+```text
+.
+├── main.c
+├── ds.h
+└── README.md
+```
 
 ## Educational Goal
 
@@ -100,5 +109,5 @@ This project is designed to understand:
 * HTTP methods
 * File I/O
 * MIME types
-* Client/server communication
-* Basic web programming with `fetch()`
+* Client-server communication
+* JavaScript `fetch()`
