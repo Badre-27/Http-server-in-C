@@ -1,17 +1,17 @@
 # HTTP Server in C
 
-A minimal HTTP server written in **C** using TCP sockets.
+A minimal HTTP server written in C using TCP sockets.
 
 ## Features
 
 * TCP socket-based HTTP server
-* `GET` — read files and list directories
-* `POST` — create files
-* `PUT` — create or update files
-* `DELETE` — delete files
-* Automatic `Content-Type` detection
+* GET — read files and list directories
+* POST — create files
+* PUT — create or update files
+* DELETE — delete files
+* Automatic Content-Type detection
 * HTML directory listing
-* Web interface using JavaScript `fetch()`
+* Web interface using JavaScript fetch()
 
 ## Requirements
 
@@ -19,7 +19,7 @@ A minimal HTTP server written in **C** using TCP sockets.
 * GCC
 * cURL
 
-Install the dependencies on Ubuntu/Debian:
+### Ubuntu / Debian
 
 ```bash
 sudo apt update
@@ -42,9 +42,7 @@ The server listens on port `8000`.
 
 Open your browser:
 
-```text
 http://localhost:8000/
-```
 
 ## Testing
 
@@ -89,7 +87,7 @@ Browser / cURL
    File System
 ```
 
-The **browser or cURL** acts as the HTTP client, while the **C program** acts as the HTTP server.
+The browser or cURL acts as the HTTP client, while the C program acts as the HTTP server.
 
 ## Project Structure
 
@@ -102,7 +100,7 @@ The **browser or cURL** acts as the HTTP client, while the **C program** acts as
 
 ## Educational Goal
 
-This project is designed to understand:
+This project demonstrates:
 
 * TCP sockets
 * HTTP requests and responses
@@ -110,4 +108,4 @@ This project is designed to understand:
 * File I/O
 * MIME types
 * Client-server communication
-* JavaScript `fetch()`
+* JavaScript fetch()
