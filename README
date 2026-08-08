@@ -1,0 +1,104 @@
+# HTTP Server in C
+
+A minimal HTTP server written in **C** using TCP sockets.
+The project demonstrates how a web server receives HTTP requests, processes them, accesses the filesystem, and sends HTTP responses.
+
+## Features
+
+* TCP socket-based HTTP server
+* `GET` — read files and display directories
+* `POST` — create files
+* `PUT` — create or update files
+* `DELETE` — delete files
+* Automatic `Content-Type` detection
+* HTML directory listing
+* Browser API tester using JavaScript `fetch()`
+
+## Requirements
+
+* Linux
+* GCC
+* `curl`
+
+Install dependencies on Ubuntu/Debian:
+
+```bash
+sudo apt update
+sudo apt install build-essential curl
+```
+
+## Build
+
+```bash
+gcc -Wall -Wextra -g main.c -o main
+```
+
+## Run
+
+```bash
+./main
+```
+
+The server listens on port **8000**.
+
+Open in your browser:
+
+```text
+http://localhost:8000/
+```
+
+## Testing
+
+### GET
+
+```bash
+curl -i http://localhost:8000/
+curl -i http://localhost:8000/main.c
+```
+
+### POST
+
+```bash
+curl -i -X POST http://localhost:8000/test.txt -d 'Hello HTTP'
+```
+
+### PUT
+
+```bash
+curl -i -X PUT http://localhost:8000/test.txt -d 'Updated content'
+```
+
+### DELETE
+
+```bash
+curl -i -X DELETE http://localhost:8000/test.txt
+```
+
+## Architecture
+
+```text
+Browser / curl
+      │
+      │ HTTP
+      ▼
+┌───────────────┐
+│  C HTTP Server│
+└───────┬───────┘
+        │
+        ▼
+   File System
+```
+
+The browser acts as the **HTTP client**, while the C program acts as the **HTTP server**.
+
+## Educational Goal
+
+This project is designed to understand:
+
+* TCP sockets
+* HTTP requests and responses
+* HTTP methods
+* File I/O
+* MIME types
+* Client/server communication
+* Basic web programming with `fetch()`
